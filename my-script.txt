@@ -1,0 +1,85 @@
+BoW: Bag of Words
+    - Order is not considered => Loosing information
+    - Vector models and classic ML use BoW (generalization)
+    - Probabilistic models and Deep Learning do not use BoW (generalization)
+
+Count Vectorizer
+    - Tokenization, Mapping from word to index
+    - Count_vectorizer sciki learn 
+    - Scipy: sparse matrices
+    - Normalization: short vs long documents => Size disparities of vectors
+        -> L2 norm 1 (Length of vector)
+        -> rate of appearance: sum of all occurences
+        -> L1 norm (ignore)
+
+Tokenization:
+    - Punctuation
+    - Casing (to lowercase!)
+    - Accents (strip_accents=True)
+    - Character-Based Tokenization: 
+        -> words: up to 1 millons words in vocabulary => 1 million dimension probability distribution
+        -> Word = information, character = no information
+        -> easy and efficient
+    - subword-based Tokenization (ignore)
+    - implementation: analyzer="word" in constructor
+
+Stopwords:
+    - Dimensionality reduction, distance consideration (no useful information in stopwords?),
+    - specify stopwords: stop_words="english", list of user defined words, None
+    - Another Language: use nltk stopwords.words('german')
+
+Stemming and Lemming
+    - already covered
+
+
+Vector Similarity
+    - Eucliadian distance: not recommended as distance might not be as important as direction!
+    - Angle between 2 vectors (cosine Similarity, cosine_distance=1-cosine_similarity) => Cosine Similarity is more common
+
+TD-IDF
+    - Find important words, count vs. inverse Document frequency
+    - unimportant words are words that occur with a high frequency in all documents
+    - Term Frequency / Document Frequency
+    - TD and IDF variations exist! (Binary etc.)
+    - 
+
+Neural Embeddings
+    - GloVe and Word2Vec
+    
+Markov-models
+    - concept learned at university
+    - depend on last state (word)
+    - Problem: depending only on last state => solution: depend on more previous states
+
+Sampling
+    - np.random.choice([0,1], p=[0.2, 0.8]) => class weighted sampling
+    - 2nd Order markov Model Implementation: depend on 2 previous states
+    - Full Model: pi, A1, A2 => A1 for second word, A2 for third word => simple naive solution
+
+
+Spam
+
+Topic Model Section introduction
+    - LDA: Latent Dirichlet Allocation: Bayesian model (very cocmplex) => Topic Modeling (originally)
+    - NMF: Non-Negative Matrix Factorization => Recommender Systems (originally)
+    - Topic Modeling: unsupervised learning, like clustering, Document retrieval/search engines (TF IDF => closest but TF IDF vectors can be too sparse)
+
+    - LDA: Latent Dirichlet Allocation Paper by David Blei, Andrew Ng and Michael Jordan
+        
+    - Matrix Factorization: R=WH  => non-negative values only
+    => NMF can be applied to topic modeling as well
+
+Latent Semantic Analysis (LSI)
+    - LSA/LSI 
+    - SVD Singular Value Decomposition
+        - Visualization
+        - Reducing Dimensionality
+        - Rotation
+    - Applying SVD to NLP
+        - Synonymy & Polysemy: Synonyms vs co-occurence
+        - What does LSA do? X-Matrix transform to Z matrix (Noise columns are dropped)
+        - TruncatedSVD in sklearn.decomposition  => fit (document words or vectors)
+            - transform (Unsupervised learning)
+    
+        
+
